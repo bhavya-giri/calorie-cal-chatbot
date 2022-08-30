@@ -1,7 +1,9 @@
 import ChatBot from "react-simple-chatbot";
 
 const CalorieCal =()=>{
-
+return(
+  <h1>2500 cals</h1>
+)
 }
 function App() {
 
@@ -98,11 +100,22 @@ function App() {
     {
       id: 'activity',
       options: [
-        { value: 'Sedentary', label: 'Sedentary',end:true  },
+        { value: 'Sedentary', label: 'Sedentary',trigger:'12'  },
         { value: 'Light', label: 'Light',end:true  },
         { value: 'Moderate', label: 'Moderate',end:true},
         { value: 'Hight', label: 'High',end:true },
       ],
+    },
+    {
+      id: '12',
+      message: 'Great! Check out your maintaince calroies',
+      trigger: 'calories',
+    },
+    {
+      id: 'calories',
+      component: <CalorieCal />,
+      asMessage: true,
+      end:true,
     },
   ]}
 />
