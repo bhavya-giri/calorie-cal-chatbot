@@ -1,76 +1,42 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ChatBot from "react-simple-chatbot";
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-class Review extends Component {
-  constructor(props) {
-    super(props);
+import React from 'react';
 
-    this.state = {
-      height: '',
-      gender: '',
-      age: '',
-      weight :'',
-      activity:''
-    };
-  }
 
-  componentWillMount() {
-    const { steps } = this.props;
-    const { age,gender,height,weight,activity } = steps;
-    
-    this.setState({  age,gender,height,weight,activity });
-    
-  }
+
+const CalorieCal =(props)=>{
+  const[calroies, setCalories] = useState(0);
   
-
-  render() {
-    const {  age,gender,height,weight,activity} = this.state;
-    const cal =()=>{
-      return(
-        parseInt(age)*parseInt(weight)*parseInt(height)
-      )
-    }
+  useEffect(()=>{
+    const {steps} = props;
     
-    return (
-      <div style={{ width: '100%' }}>
-        <h3>{cal()}</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name</td>
-              <td>{activity.value}</td>
-            </tr>
-            <tr>
-              <td>Gender</td>
-              <td>{gender.value}</td>
-            </tr>
-            <tr>
-              <td>Age</td>
-              <td>{age.value}</td>
-            </tr>
-            <tr>
-              <td>Gender</td>
-              <td>{height.value}</td>
-            </tr>
-            <tr>
-              <td>Age</td>
-              <td>{weight.value}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+    if(steps.gender.value === 'male'){
+      if(steps.activity.value === 'Sedentary'){
+        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value+5)*1.2)
+      }else if(steps.activity.value === 'Light'){
+        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value+5)*1.5)
+      }else if(steps.activity.value === 'Moderate'){
+        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value+5)*1.8)
+      }else{
+        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value+5)*2)
+      }
+    }else{
+      if(steps.activity.value === 'Sedentary'){
+        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value-161)*1.2)
+      }else if(steps.activity.value === 'Light'){
+        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value-161)*1.5)
+      }else if(steps.activity.value === 'Moderate'){
+        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value-161)*1.8)
+      }else{
+        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value-161)*2)
+      }
+
+    }
+  },[props])
+  return(
+<div>{`${calroies} calroies`}</div>
+  )
 }
-
-Review.propTypes = {
-  steps: PropTypes.object,
-};
-
-Review.defaultProps = {
-  steps: undefined,
-};
 
 
 function App() {
@@ -181,7 +147,7 @@ function App() {
     },
     {
       id: 'calories',
-      component: <Review />,
+      component: <CalorieCal />,
       asMessage: true,
       end:true,
     },
