@@ -1,10 +1,78 @@
+// import { useEffect, useState } from "react";
 import ChatBot from "react-simple-chatbot";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+class Review extends Component {
+  constructor(props) {
+    super(props);
 
-const CalorieCal =()=>{
-return(
-  <h1>2500 cals</h1>
-)
+    this.state = {
+      height: '',
+      gender: '',
+      age: '',
+      weight :'',
+      activity:''
+    };
+  }
+
+  componentWillMount() {
+    const { steps } = this.props;
+    const { age,gender,height,weight,activity } = steps;
+    
+    this.setState({  age,gender,height,weight,activity });
+    
+  }
+  
+
+  render() {
+    const {  age,gender,height,weight,activity} = this.state;
+    const cal =()=>{
+      return(
+        parseInt(age)*parseInt(weight)*parseInt(height)
+      )
+    }
+    
+    return (
+      <div style={{ width: '100%' }}>
+        <h3>{cal()}</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td>{activity.value}</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>{gender.value}</td>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td>{age.value}</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>{height.value}</td>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td>{weight.value}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
+
+Review.propTypes = {
+  steps: PropTypes.object,
+};
+
+Review.defaultProps = {
+  steps: undefined,
+};
+
+
 function App() {
 
   return (
@@ -101,9 +169,9 @@ function App() {
       id: 'activity',
       options: [
         { value: 'Sedentary', label: 'Sedentary',trigger:'12'  },
-        { value: 'Light', label: 'Light',end:true  },
-        { value: 'Moderate', label: 'Moderate',end:true},
-        { value: 'Hight', label: 'High',end:true },
+        { value: 'Light', label: 'Light',trigger:'12' },
+        { value: 'Moderate', label: 'Moderate',trigger:'12'},
+        { value: 'Hight', label: 'High',trigger:'12'},
       ],
     },
     {
@@ -113,7 +181,7 @@ function App() {
     },
     {
       id: 'calories',
-      component: <CalorieCal />,
+      component: <Review />,
       asMessage: true,
       end:true,
     },
