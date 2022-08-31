@@ -20,7 +20,7 @@ function App() {
     <div className="App">
         <ThemeProvider theme={theme}>
       <ChatBot
-      headerTitle = "Maintenance Calories Calculator Bot"
+      headerTitle = "Maintenance Calorie Calculator Bot"
       botAvatar = {icon}
         steps={[
           {
