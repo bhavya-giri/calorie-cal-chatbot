@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/calorie-cal-chatbot/static/css/main.afc7b83c.css",
+    "main.js": "/calorie-cal-chatbot/static/js/main.fb31219a.js",
+    "static/media/icon.png": "/calorie-cal-chatbot/static/media/icon.3fdfe216396c34e13283.png",
+    "index.html": "/calorie-cal-chatbot/index.html",
+    "main.afc7b83c.css.map": "/calorie-cal-chatbot/static/css/main.afc7b83c.css.map",
+    "main.fb31219a.js.map": "/calorie-cal-chatbot/static/js/main.fb31219a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.afc7b83c.css",
+    "static/js/main.fb31219a.js"
+  ]
+}
