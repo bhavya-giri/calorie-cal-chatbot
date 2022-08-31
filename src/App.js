@@ -1,13 +1,27 @@
 import ChatBot from "react-simple-chatbot";
 import React from "react";
 import CalorieCal from "./CalorieCal";
- 
-
+import icon from './icon.png'
+import { ThemeProvider } from 'styled-components';
+import './App.css'
 function App() {
+  const theme = {
+    background: '#f5f8fb',
+    fontFamily: 'Helvetica Neue',
+    headerBgColor: '#4166F5',
+    headerFontColor: '#fff',
+    headerFontSize: '15px',
+    botBubbleColor: '#4166F5',
+    botFontColor: '#fff',
+    userBubbleColor: '#fff',
+    userFontColor: '#4a4a4a',
+  };
   return (
     <div className="App">
+        <ThemeProvider theme={theme}>
       <ChatBot
       headerTitle = "Maintenance Calories Calculator Bot"
+      botAvatar = {icon}
         steps={[
           {
             id: "1",
@@ -50,7 +64,7 @@ function App() {
           },
           {
             id: "6",
-            message: "What is your height(cm)?",
+            message: "What is your height (cm)?",
             trigger: "height",
           },
           {
@@ -71,7 +85,7 @@ function App() {
           },
           {
             id: "8",
-            message: "What is your weight(kg)?",
+            message: "What is your weight (kg)?",
             trigger: "weight",
           },
           {
@@ -117,6 +131,7 @@ function App() {
           },
         ]}
       />
+      </ThemeProvider>
     </div>
   );
 }
