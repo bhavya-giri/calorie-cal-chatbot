@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <ChatBot
+      headerTitle = "Maintenance Calories Calculator Bot"
         steps={[
           {
             id: "1",
