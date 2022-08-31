@@ -9,26 +9,27 @@ const CalorieCal =(props)=>{
   
   useEffect(()=>{
     const {steps} = props;
+    const{activity,weight,height,age,gender} = steps;
     
-    if(steps.gender.value === 'male'){
-      if(steps.activity.value === 'Sedentary'){
-        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value+5)*1.2)
-      }else if(steps.activity.value === 'Light'){
-        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value+5)*1.5)
-      }else if(steps.activity.value === 'Moderate'){
-        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value+5)*1.8)
+    if(gender.value === 'male'){
+      if(activity.value === 'Sedentary'){
+        setCalories((10*weight.value+6.25*height.value-5*age.value+5)*1.2)
+      }else if(activity.value === 'Light'){
+        setCalories((10*weight.value+6.25*height.value-5*age.value+5)*1.5)
+      }else if(activity.value === 'Moderate'){
+        setCalories((10*weight.value+6.25*height.value-5*age.value+5)*1.8)
       }else{
-        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value+5)*2)
+        setCalories((10*weight.value+6.25*height.value-5*age.value+5)*2)
       }
     }else{
-      if(steps.activity.value === 'Sedentary'){
-        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value-161)*1.2)
-      }else if(steps.activity.value === 'Light'){
-        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value-161)*1.5)
-      }else if(steps.activity.value === 'Moderate'){
-        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value-161)*1.8)
+      if(activity.value === 'Sedentary'){
+        setCalories((10*weight.value+6.25*height.value-5*age.value-161)*1.2)
+      }else if(activity.value === 'Light'){
+        setCalories((10*weight.value+6.25*height.value-5*age.value-161)*1.5)
+      }else if(activity.value === 'Moderate'){
+        setCalories((10*weight.value+6.25*height.value-5*age.value-161)*1.8)
       }else{
-        setCalories((10*steps.weight.value+6.25*steps.height.value-5*steps.age.value-161)*2)
+        setCalories((10*weight.value+6.25*height.value-5*age.value-161)*2)
       }
 
     }
